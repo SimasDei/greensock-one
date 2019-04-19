@@ -1,25 +1,45 @@
 (function($) {
-    
-	var img = $('img'),
-		h2 = $('h2'),
-		h1 = $('h1'),
-		intro = $('.intro'),
-		listItem = $('ul li'),
-		tl = new TimelineLite();
+  var img = $("img"),
+    h2 = $("h2"),
+    h1 = $("h1"),
+    intro = $(".intro"),
+    listItem = $("ul li"),
+    tl = new TimelineLite();
 
-	// Controlling Timeline Playback
-	tl
-		.from(h1, 0.3, {y: -15, autoAlpha: 0, ease:Power1.easeOut})
-		.add('intro')
-		.from(intro, 0.3, {y: -15, autoAlpha: 0, ease:Power1.easeOut})
-		.from(img, 0.3, {y: -15, autoAlpha: 0, ease:Power1.easeOut}, 'intro')
-		.from(h2, 0.3, {y: -15, autoAlpha: 0, ease:Power1.easeOut}, 'intro+=3')
-		.from(listItem, 0.3, {y: -15, autoAlpha: 0, ease:Power1.easeOut}, 'intro');
+  // Controlling Timeline Playback
+  tl.from(h1, 1, { y: -15, autoAlpha: 0, ease: Power1.easeOut })
+    .from(intro, 1, { y: -15, autoAlpha: 0, ease: Power1.easeOut })
+    .from(img, 1, { y: -15, autoAlpha: 0, ease: Power1.easeOut })
+    .from(h2, 1, { y: -15, autoAlpha: 0, ease: Power1.easeOut })
+    .from(listItem, 1, { y: -15, autoAlpha: 0, ease: Power1.easeOut });
 
+  tl.pause();
+
+  $("#btnPlay").on("click", function() {
+    tl.play();
+  });
+  $("#btnPause").on("click", function() {
+    tl.pause();
+  });
+  $("#btnResume").on("click", function() {
+    tl.resume();
+  });
+  $("#btnReverse").on("click", function() {
+    tl.reverse();
+  });
+  $("#btnSpeedUp").on("click", function() {
+    tl.timeScale(2);
+  });
+  $("#btnSlowDown").on("click", function() {
+    tl.timeScale(0.5);
+  });
+  $("#btnProgress").on("click", function() {
+    tl.progress(0.5);
+  });
+  $("#btnRestart").on("click", function() {
+    tl.restart(0.5);
+  });
+  $("#btnSeek").on("click", function() {
+    tl.seek(1);
+  });
 })(jQuery);
-
-
-
-
-
-
